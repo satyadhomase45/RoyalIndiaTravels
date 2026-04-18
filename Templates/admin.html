@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Premium Admin Panel</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="dashboard">
+
+<!-- Sidebar -->
+<div class="sidebar">
+<h2>Royal India</h2>
+
+<a href="/admin">Dashboard</a>
+<a href="/add_package">Add Package</a>
+<a href="/admin_logout">Logout</a>
+</div>
+
+<!-- Main -->
+<div class="main-content">
+
+<h1>Admin Dashboard</h1>
+
+<div class="cards">
+
+<div class="card-box">
+<h2>{{ bookings|length }}</h2>
+<p>Total Bookings</p>
+</div>
+
+<div class="card-box">
+<h2>{{ users|length }}</h2>
+<p>Total Users</p>
+</div>
+
+<div class="card-box">
+<h2>{{ packages|length }}</h2>
+<p>Total Packages</p>
+</div>
+
+</div>
+
+<h2 class="table-title">Recent Bookings</h2>
+
+<table class="booking-table">
+
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Package</th>
+<th>Date</th>
+<th>Action</th>
+</tr>
+
+{% for row in bookings %}
+<tr>
+<td>{{ row[0] }}</td>
+<td>{{ row[1] }}</td>
+<td>{{ row[4] }}</td>
+<td>{{ row[6] }}</td>
+<td>
+<a href="/delete_booking/{{ row[0] }}" class="delete-btn">Delete</a>
+</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</div>
+</div>
+
+</body>
+</html>

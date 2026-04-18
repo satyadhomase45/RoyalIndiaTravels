@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ title }}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<style>
+body{
+margin:0;
+padding:0;
+font-family:Arial, sans-serif;
+background:#eef2f7;
+}
+
+.details-wrapper{
+width:92%;
+max-width:1280px;
+margin:40px auto;
+background:#fff;
+border-radius:24px;
+overflow:hidden;
+box-shadow:0 18px 45px rgba(0,0,0,0.12);
+}
+
+.hero-section{
+height:460px;
+position:relative;
+overflow:hidden;
+}
+
+.hero-bg{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.hero-overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.45);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+color:white;
+z-index:2;
+}
+
+.hero-overlay h1{
+font-size:64px;
+margin:0;
+font-weight:800;
+color:#fff;
+text-shadow:0 4px 12px rgba(0,0,0,0.5);
+}
+
+.hero-overlay p{
+font-size:28px;
+margin-top:15px;
+font-weight:bold;
+color:#fff;
+}
+
+.content-section{
+padding:45px;
+}
+
+.desc{
+text-align:center;
+font-size:24px;
+color:#333;
+margin-bottom:35px;
+}
+
+.info-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:24px;
+}
+
+.info-box{
+background:#f9fafb;
+padding:28px;
+border-radius:18px;
+box-shadow:0 8px 18px rgba(0,0,0,0.06);
+}
+
+.info-box h3{
+margin-top:0;
+color:#ff5a1f;
+font-size:25px;
+margin-bottom:12px;
+}
+
+.info-box p{
+font-size:18px;
+line-height:1.8;
+margin:0;
+color:#333;
+}
+
+.plan-box{
+margin-top:35px;
+padding:32px;
+border-radius:18px;
+background:linear-gradient(135deg,#ff6a00,#ff9100);
+color:white;
+text-align:center;
+}
+
+.plan-box h2{
+margin:0 0 10px;
+font-size:36px;
+}
+
+.plan-box p{
+margin:0;
+font-size:22px;
+line-height:1.8;
+}
+
+.btn-area{
+text-align:center;
+margin-top:35px;
+}
+
+.btn-area a{
+display:inline-block;
+margin:10px;
+padding:14px 28px;
+background:#111;
+color:white;
+text-decoration:none;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+transition:0.3s;
+}
+
+.btn-area a:hover{
+background:#ff5a1f;
+transform:translateY(-3px);
+}
+
+@media(max-width:768px){
+
+.details-wrapper{
+width:96%;
+margin:20px auto;
+}
+
+.hero-section{
+height:300px;
+}
+
+.hero-overlay h1{
+font-size:34px;
+}
+
+.hero-overlay p{
+font-size:18px;
+}
+
+.content-section{
+padding:22px;
+}
+
+.desc{
+font-size:18px;
+}
+
+.info-box h3{
+font-size:20px;
+}
+
+.info-box p,
+.plan-box p{
+font-size:16px;
+}
+
+.plan-box h2{
+font-size:28px;
+}
+
+.btn-area a{
+display:block;
+width:220px;
+margin:12px auto;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+{% if place == 'goa' %}
+{% set title='Goa Beach Tour' %}
+{% set image='images/goa.jpg' %}
+{% set days='4 Days / 3 Nights' %}
+{% set desc='Luxury beach vacation with nightlife and water sports.' %}
+{% set places='Baga Beach, Calangute, Aguada Fort, Cruise Party' %}
+{% set hotels='Taj Goa, Novotel, Radisson Blu' %}
+{% set transport='Airport Pickup, AC Coach, Local Cab' %}
+{% set itinerary='Day 1 Arrival • Day 2 North Goa • Day 3 Watersports • Day 4 Return' %}
+{% set plans='Standard ₹12,999 | Deluxe ₹17,999 | Luxury ₹24,999' %}
+
+{% elif place == 'kashmir' %}
+{% set title='Kashmir Paradise' %}
+{% set image='images/kashmir.jpg' %}
+{% set days='5 Days / 4 Nights' %}
+{% set desc='Snow mountains, lakes and unforgettable scenic beauty.' %}
+{% set places='Dal Lake, Gulmarg, Sonmarg, Pahalgam' %}
+{% set hotels='Grand Mumtaz, Radisson Srinagar' %}
+{% set transport='Airport Pickup, SUV, Sightseeing Coach' %}
+{% set itinerary='Day 1 Srinagar • Day 2 Gulmarg • Day 3 Pahalgam • Day 4 Sonmarg • Day 5 Return' %}
+{% set plans='Standard ₹18,999 | Deluxe ₹25,999 | Luxury ₹34,999' %}
+
+{% elif place == 'manali' %}
+{% set title='Manali Adventure' %}
+{% set image='images/manali.jpg' %}
+{% set days='4 Days / 3 Nights' %}
+{% set desc='Snow adventure, valleys and mountain fun.' %}
+{% set places='Solang Valley, Rohtang Pass, Hidimba Temple' %}
+{% set hotels='Snow Peak Resort, Himalayan Stay' %}
+{% set transport='Volvo Bus, Cab, Local Tours' %}
+{% set itinerary='Day 1 Arrival • Day 2 Solang • Day 3 Rohtang • Day 4 Return' %}
+{% set plans='Standard ₹14,999 | Deluxe ₹19,999 | Luxury ₹27,999' %}
+
+{% elif place == 'kerala' %}
+{% set title='Kerala Escape' %}
+{% set image='images/kerala.jpg' %}
+{% set days='6 Days / 5 Nights' %}
+{% set desc='Backwaters, tea gardens and peaceful tropical beauty.' %}
+{% set places='Munnar, Alleppey, Kochi, Thekkady' %}
+{% set hotels='Le Meridien, Lake Resort, Spice Village' %}
+{% set transport='Airport Pickup, Houseboat, AC Cab' %}
+{% set itinerary='Day 1 Kochi • Day 2 Munnar • Day 3 Thekkady • Day 4 Alleppey • Day 5 Leisure • Day 6 Return' %}
+{% set plans='Standard ₹22,999 | Deluxe ₹29,999 | Luxury ₹39,999' %}
+
+{% elif place == 'ladakh' %}
+{% set title='Ladakh Expedition' %}
+{% set image='images/ladakh.jpg' %}
+{% set days='7 Days / 6 Nights' %}
+{% set desc='High mountains, lakes and thrilling road trip experience.' %}
+{% set places='Leh, Nubra Valley, Pangong Lake, Khardung La' %}
+{% set hotels='Leh Residency, Desert Camp' %}
+{% set transport='Airport Pickup, SUV Expedition' %}
+{% set itinerary='Day 1 Leh • Day 2 Sham Valley • Day 3 Nubra • Day 4 Pangong • Day 5 Leh • Day 6 Leisure • Day 7 Return' %}
+{% set plans='Standard ₹28,999 | Deluxe ₹38,999 | Luxury ₹52,999' %}
+
+{% elif place == 'jaipur' %}
+{% set title='Jaipur Royal Tour' %}
+{% set image='images/jaipur.jpg' %}
+{% set days='3 Days / 2 Nights' %}
+{% set desc='Royal palaces, forts and rich Rajasthani culture.' %}
+{% set places='Amer Fort, Hawa Mahal, City Palace, Jal Mahal' %}
+{% set hotels='Holiday Inn, Royal Heritage Haveli' %}
+{% set transport='Railway Pickup, AC Cab, Guided Tour' %}
+{% set itinerary='Day 1 City Tour • Day 2 Fort Tour • Day 3 Shopping & Return' %}
+{% set plans='Standard ₹10,999 | Deluxe ₹15,999 | Luxury ₹24,999' %}
+{% endif %}
+
+<div class="details-wrapper">
+
+<div class="hero-section">
+<img src="{{ url_for('static', filename=image) }}" class="hero-bg">
+
+<div class="hero-overlay">
+<h1>{{ title }}</h1>
+<p>{{ days }}</p>
+</div>
+</div>
+
+<div class="content-section">
+
+<p class="desc">{{ desc }}</p>
+
+<div class="info-grid">
+
+<div class="info-box">
+<h3>Places to Visit</h3>
+<p>{{ places }}</p>
+</div>
+
+<div class="info-box">
+<h3>Hotels Available</h3>
+<p>{{ hotels }}</p>
+</div>
+
+<div class="info-box">
+<h3>Transportation</h3>
+<p>{{ transport }}</p>
+</div>
+
+<div class="info-box">
+<h3>Full Itinerary</h3>
+<p>{{ itinerary }}</p>
+</div>
+
+</div>
+
+<div class="plan-box">
+<h2>Plans & Pricing</h2>
+<p>{{ plans }}</p>
+</div>
+
+<div class="btn-area">
+<a href="/booking">Book Now</a>
+<a href="/">Back Home</a>
+</div>
+
+</div>
+</div>
+
+</body>
+</html>

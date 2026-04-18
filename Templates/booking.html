@@ -1,0 +1,38 @@
+<!-- booking.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Tour</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<section class="booking-section">
+    <div class="booking-box">
+        <h2><u>Book Your Dream Tour</u></h2>
+        <p>Reserve your perfect holiday package with Royal India Travels</p>
+
+        <form action="/booking" method="POST" class="booking-form">
+
+            <input type="text" name="fullname" placeholder="Full Name" required>
+
+            <input type="email" name="email" placeholder="Email Address" required>
+
+            <input type="text" name="location" placeholder="Your City" required>
+
+            <input type="text" name="package_name" placeholder="Package Name" required>
+
+            <input type="number" name="persons" placeholder="No. of Persons" required>
+
+            <input type="date" name="travel_date" required>
+
+            <input type="submit" value="Book Now">
+
+        </form>
+    </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About Us</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/packages">Packages</a>
+    <a href="/contact">Contact</a>
+</nav>
+
+<section class="about-section">
+    <div class="about-box">
+        <h1>About Our Travel Website</h1>
+        <p>
+            We help travelers discover beautiful destinations, affordable tour packages,
+            and unforgettable experiences. Our mission is to make travel easy, exciting,
+            and budget friendly for everyone.
+        </p>
+
+        <p>
+            From beaches to mountains, adventure trips to family holidays,
+            we provide the best travel planning services.
+        </p>
+
+        <img src="{{ url_for('static', filename='images/travel.jpg') }}" alt="Travel Image">
+    </div>
+</section>
+
+</body>
+</html>

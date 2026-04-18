@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Payment</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<section class="booking-page">
+
+<h2>Payment Page</h2>
+
+<form action="/confirm_booking" method="POST" class="booking-form">
+
+<input type="text" placeholder="Card Number" required>
+<input type="text" placeholder="Card Holder Name" required>
+<input type="text" placeholder="Expiry Date" required>
+<input type="text" placeholder="CVV" required>
+
+<input type="submit" value="Pay Now">
+
+</form>
+
+</section>
+
+</body>
+</html>

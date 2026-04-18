@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal India Travels</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="logo">Royal India Travels</div>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/booking">Booking</a>
+    </div>
+</nav>
+
+<!-- Hero Slider -->
+<section class="hero-slider">
+
+<div class="slide active slide-goa">
+    <div class="hero-content">
+        <h1>Explore Goa Beaches</h1>
+        <p>Luxury Holidays & Fun Trips</p>
+        <a href="{{ url_for('booking') }}" class="book-btn">Book Now</a>
+    </div>
+</div>
+
+<div class="slide slide-kashmir">
+    <div class="hero-content">
+        <h1>Discover Kashmir</h1>
+        <p>Paradise on Earth</p>
+        <a href="{{ url_for('booking') }}" class="book-btn">Book Now</a>
+    </div>
+</div>
+
+<div class="slide slide-manali">
+    <div class="hero-content">
+        <h1>Adventure in Manali</h1>
+        <p>Snow Mountains Await</p>
+        <a href="{{ url_for('booking') }}" class="book-btn">Book Now</a>
+    </div>
+</div>
+        </div>
+    </div>
+
+</section>
+
+<!-- Search Section -->
+<section class="search-section">
+
+    <h2>Find Your Dream Destination</h2>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search Goa, Kashmir, Kerala...">
+        <button onclick="searchTour()">Search</button>
+    </div>
+
+    <div class="filter-buttons">
+        <button onclick="filterTour('all')">All</button>
+        <button onclick="filterTour('beach')">Beach</button>
+        <button onclick="filterTour('hill')">Hill Station</button>
+        <button onclick="filterTour('adventure')">Adventure</button>
+        <button onclick="filterTour('honeymoon')">Honeymoon</button>
+    </div>
+
+</section>
+
+<!-- Premium Packages -->
+<section class="premium-packages">
+<h2>Popular Tour Packages</h2>
+
+<div class="premium-grid">
+
+{% for p in packages %}
+<div class="tour-card">
+
+    <img src="{{ url_for('static', filename='images/' + p[2]) }}">
+
+    <div class="tour-info">
+        <h3>{{ p[1] }}</h3>
+        <p>{{ p[3] }}</p>
+        <span>₹{{ p[4] }}</span>
+        <a href="/details/{{ p[1].lower().split()[0] }}">View Details</a>
+    </div>
+
+</div>
+{% endfor %}
+
+</div>
+</section>
+
+
+<!-- Footer -->
+<footer class="footer">
+    <p>© 2026 Royal India Travels | Pune, Maharashtra</p>
+</footer>
+
+<!-- JavaScript -->
+<script>
+function searchTour(){
+    let search = document.getElementById("searchInput").value.toLowerCase();
+
+    if(search.includes("goa") || search.includes("kashmir") || search.includes("manali") || search.includes("kerala")){
+        window.location.href="/booking";
+    } else {
+        alert("Package not found");
+    }
+}
+
+function filterTour(type){
+    alert(type + " packages coming soon!");
+}
+
+/* Auto Slider */
+let slides = document.querySelectorAll(".slide");
+let current = 0;
+
+function autoSlider(){
+    slides[current].classList.remove("active");
+    current = (current + 1) % slides.length;
+    slides[current].classList.add("active");
+}
+
+setInterval(autoSlider, 3000);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Package Details</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<section class="details-page">
+
+<h1>{{ package|title }} Tour Package</h1>
+
+<img src="{{ url_for('static', filename='images/' + package + '.jpg') }}" width="500">
+
+<h2>Price: ₹14,999</h2>
+<p>Duration: 4 Days / 3 Nights</p>
+
+<h3>Day Wise Itinerary</h3>
+
+<ul>
+<li>Day 1: Arrival and Hotel Check-in</li>
+<li>Day 2: Full Sightseeing Tour</li>
+<li>Day 3: Adventure / Shopping</li>
+<li>Day 4: Return Journey</li>
+</ul>
+
+<h3>Included</h3>
+
+<ul>
+<li>Hotel Stay</li>
+<li>Breakfast</li>
+<li>Pickup & Drop</li>
+<li>Sightseeing</li>
+</ul>
+
+<a href="{{ url_for('booking') }}" class="book-btn">Book Now</a>
+
+</section>
+
+</body>
+</html>
